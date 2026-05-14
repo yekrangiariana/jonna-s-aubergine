@@ -2,8 +2,8 @@ const CACHE_NAME = 'jonna-aubergine-v1';
 const ASSETS = [
   '/',
   '/index.html',
-  '/manifest.json',
-  '/icon.svg',
+  '/app.js',
+  '/styles.css',
   'https://cdn.tailwindcss.com',
   'https://unpkg.com/dexie/dist/dexie.js',
   'https://unpkg.com/lucide@latest',
