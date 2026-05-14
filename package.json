@@ -3,13 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite --port 3000 --host 0.0.0.0",
-    "start": "node -e \"const http = require('http'), fs = require('fs'), path = require('path'); http.createServer((req, res) => { let p = path.join(__dirname, req.url === '/' ? 'index.html' : req.url); if (fs.existsSync(p)) { res.writeHead(200); fs.createReadStream(p).pipe(res); } else { res.writeHead(404); res.end('Not found'); } }).listen(3000);\"",
-    "build": "mkdir -p dist && cp -r src public index.html dist/ && cp public/* dist/ 2>/dev/null || true"
-  },
-  "devDependencies": {
-    "@tailwindcss/vite": "^4.3.0",
-    "tailwindcss": "^4.3.0",
-    "vite": "^6.2.3"
+    "start": "npx -y servor . index.html 3000",
+    "build": "mkdir -p dist && cp -r src index.html manifest.json icon.svg recipes.json sw.js dist/"
   }
 }

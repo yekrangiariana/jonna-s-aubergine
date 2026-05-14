@@ -90,7 +90,7 @@ async function init() {
 
 async function loadExploreRecipes() {
     try {
-        const response = await fetch('/recipes.json');
+        const response = await fetch('recipes.json');
         if (response.ok) {
             state.exploreRecipes = await response.json();
             updateIngredientSuggestions();
