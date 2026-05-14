@@ -1,0 +1,87 @@
+[
+  {
+    "title": "Classic Aubergine Parmigiana",
+    "description": "A heart-warming Italian classic featuring layers of fried aubergine, rich tomato sauce, and melted mozzarella.",
+    "prepTime": "20 mins",
+    "cookTime": "45 mins",
+    "servings": 4,
+    "category": "Dinner",
+    "image": "https://images.unsplash.com/photo-1625944230945-17440469228c?q=80&w=1000&auto=format&fit=crop",
+    "ingredients": [
+      "3 large aubergines, sliced",
+      "500ml tomato passata",
+      "2 cloves garlic, minced",
+      "250g mozzarella cheese",
+      "100g parmesan cheese, grated",
+      "Fresh basil leaves",
+      "Olive oil for frying",
+      "Salt and pepper to taste"
+    ],
+    "instructions": [
+      "Layer the aubergine slices in a colander, sprinkling each layer with salt. Let sit for 30 minutes to draw out moisture.",
+      "Rinse and pat dry the aubergine slices.",
+      "Heat olive oil in a pan and fry aubergine slices until golden on both sides. Drain on paper towels.",
+      "In a separate pan, sauté garlic in olive oil, then add passata and simmer for 15 minutes. Season with salt and pepper.",
+      "In a baking dish, spread a little sauce, then a layer of aubergine, followed by sauce, mozzarella, parmesan, and basil.",
+      "Repeat layers until all ingredients are used, finishing with plenty of parmesan.",
+      "Bake at 200°C (400°F) for about 30 minutes until bubbling and golden."
+    ],
+    "isFavorite": true,
+    "createdAt": 1715688000000
+  },
+  {
+    "title": "Zesty Lemon Pancake",
+    "description": "Fluffy, golden pancakes with a bright citrus kick. Perfect for a lazy Sunday morning.",
+    "prepTime": "10 mins",
+    "cookTime": "15 mins",
+    "servings": 2,
+    "category": "Breakfast",
+    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7bb7445?q=80&w=1000&auto=format&fit=crop",
+    "ingredients": [
+      "200g all-purpose flour",
+      "2 tsp baking powder",
+      "1 egg",
+      "300ml milk",
+      "Zest of 1 lemon",
+      "2 tbsp sugar",
+      "Pinch of salt",
+      "Butter for frying"
+    ],
+    "instructions": [
+      "Sift flour, baking powder, salt, and sugar into a large bowl.",
+      "In another bowl, whisk the egg, milk, and lemon zest.",
+      "Add the wet ingredients to the dry and stir until just combined (don't overbeat).",
+      "Heat butter in a non-stick pan over medium heat.",
+      "Pour a small amount of batter into the pan for each pancake.",
+      "Flip when bubbles appear on the surface and cook for another minute until golden.",
+      "Serve warm with honey or maple syrup."
+    ],
+    "isFavorite": false,
+    "createdAt": 1715691600000
+  },
+  {
+    "title": "Midnight Berry Smoothie",
+    "description": "An antioxidant-rich boost featuring blueberries, blackberries, and a hint of mint.",
+    "prepTime": "5 mins",
+    "cookTime": "0 mins",
+    "servings": 1,
+    "category": "Snack",
+    "image": "https://images.unsplash.com/photo-1553530666-ba11a7da3888?q=80&w=1000&auto=format&fit=crop",
+    "ingredients": [
+      "1 cup frozen mixed berries",
+      "1 ripe banana",
+      "1 cup almond milk",
+      "1 tbsp honey",
+      "3-4 fresh mint leaves",
+      "1/2 cup Greek yogurt"
+    ],
+    "instructions": [
+      "Place berries, banana, and mint leaves into a blender.",
+      "Add almond milk, Greek yogurt, and honey.",
+      "Blend on high until completely smooth.",
+      "Pour into a chilled glass and garnish with an extra mint leaf."
+    ],
+    "isFavorite": false,
+    "createdAt": 1715695200000
+  }
+]
