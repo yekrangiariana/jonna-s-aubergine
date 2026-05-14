@@ -1,20 +1,22 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Culina - Static Recipe App
 
-# Run and deploy your AI Studio app
+This is a purely static, client-side web application. It uses **React**, **Vite**, and **Dexie (IndexedDB)** to manage your recipes entirely within your browser.
 
-This contains everything you need to run your app locally.
+## Why use `npm`?
+Even though the application runs statically in the browser, `npm` (Node Package Manager) is used during **development** to:
+1. **Install tools**: Vite, React, and other libraries.
+2. **Run a development server**: `npm run dev` lets you see changes in real-time.
+3. **Build the production site**: `npm run build` compiles your code into optimized static HTML, CSS, and JS files.
 
-View your app in AI Studio: https://ai.studio/apps/8ce1ec9f-7728-4b7f-ab34-dc82ca5d7d7c
+## Running on GitHub Pages
+Yes! You can run this on GitHub Pages as is.
 
-## Run Locally
+1. **Build the app**:
+   ```bash
+   npm run build
+   ```
+2. **Deploy the `dist/` folder**:
+   GitHub Pages will serve everything inside the `dist/` folder. The app is configured to use relative paths, so it will work automatically regardless of your repository name.
 
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Static Offline Storage
+The app uses **Dexie.js** which stores data in your browser's IndexedDB. Your recipes will persist on your device even if you close the browser or go offline, but they will not sync between different devices/browsers unless you implement a backend sync later.
