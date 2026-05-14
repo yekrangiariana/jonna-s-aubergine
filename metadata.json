@@ -1,6 +1,6 @@
 {
   "name": "Jonna's Aubergine",
-  "description": "A modern, Material 3 inspired recipe organizer featuring offline storage and a polished mobile experience.",
+  "description": "A static, vanilla JS recipe organizer with PWA support, adaptive Dark Mode, and local IndexedDB storage.",
   "requestFramePermissions": [],
   "majorCapabilities": []
 }
