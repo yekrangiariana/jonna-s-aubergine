@@ -444,3 +444,41 @@ if ('serviceWorker' in navigator) {
             .catch(err => console.log('Service Worker registration failed:', err));
     });
 }
+
+// PWA Install Logic
+let deferredPrompt;
+const installBtn = document.getElementById('install-button');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent Chrome 67 and earlier from automatically showing the prompt
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    deferredPrompt = e;
+    // Update UI notify the user they can install the PWA
+    if (installBtn) {
+        installBtn.classList.remove('hidden');
+        lucide.createIcons();
+    }
+});
+
+if (installBtn) {
+    installBtn.addEventListener('click', async () => {
+        if (!deferredPrompt) return;
+        // Show the install prompt
+        deferredPrompt.prompt();
+        // Wait for the user to respond to the prompt
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`User response to the install prompt: ${outcome}`);
+        // We've used the prompt, and can't use it again, throw it away
+        deferredPrompt = null;
+        // Hide the install button
+        installBtn.classList.add('hidden');
+    });
+}
+
+window.addEventListener('appinstalled', () => {
+    // Log install to analytics
+    console.log('PWA was installed');
+    // Hide the install button
+    if (installBtn) installBtn.classList.add('hidden');
+});

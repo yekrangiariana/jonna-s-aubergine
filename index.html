@@ -6,7 +6,7 @@
     <title>Jonna's Aubergine 🍆</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#6750A4">
-    <link rel="apple-touch-icon" href="/icon.svg">
+    <link rel="apple-touch-icon" href="icon.svg">
     <!-- Tailwind CSS 3 CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Dexie.js CDN -->
@@ -38,6 +38,12 @@
                     <i data-lucide="heart"></i>
                 </div>
                 <span class="text-[10px] md:text-[11px] font-medium">Favorites</span>
+            </button>
+            <button id="install-button" class="hidden flex flex-col items-center gap-1 group md:w-full mt-auto md:mb-4">
+                <div class="nav-rail-icon inactive group-hover:bg-[var(--m3-primary)]/10">
+                    <i data-lucide="download" class="w-[22px] h-[22px]"></i>
+                </div>
+                <span class="text-[10px] font-medium text-[var(--m3-on-surface-variant)]">Install</span>
             </button>
         </div>
     </nav>
