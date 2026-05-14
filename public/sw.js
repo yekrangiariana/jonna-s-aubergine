@@ -1,10 +1,9 @@
-const CACHE_NAME = 'jonna-aubergine-v1';
+const CACHE_NAME = 'jonna-aubergine-v2';
 const ASSETS = [
   '/',
   '/index.html',
-  '/app.js',
-  '/styles.css',
-  'https://cdn.tailwindcss.com',
+  '/manifest.json',
+  '/icon.svg',
   'https://unpkg.com/dexie/dist/dexie.js',
   'https://unpkg.com/lucide@latest',
   'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,700&display=swap'
@@ -33,10 +32,16 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  // Only cache GET requests
+  if (event.request.method !== 'GET') return;
+
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
-        return response || fetch(event.request);
+        return response || fetch(event.request).catch(() => {
+            // Fallback for offline if needed, but for now just let it fail naturally 
+            // if not in cache and no network
+        });
       })
   );
 });
