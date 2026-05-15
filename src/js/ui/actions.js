@@ -39,6 +39,15 @@ export function openRecipeActions(e, idOrIndex, isExplore) {
     const addHomeBtn = document.getElementById('action-add-home-btn');
     const editBtn = document.getElementById('action-edit-btn');
     const deleteBtn = document.getElementById('action-delete-btn');
+    const viewBtn = document.getElementById('action-view-btn');
+    
+    // Check if we are inside the detail modal
+    const detailModal = document.getElementById('detail-modal');
+    const isDetailOpen = !detailModal.classList.contains('hidden');
+    
+    // Hide "View Details" if we are already viewing this recipe's details
+    // For Explore recipes, we check if the detail view is showing the same recipe
+    viewBtn.classList.toggle('hidden', isDetailOpen);
     
     if (isExplore) {
         const alreadyAdded = state.recipes.some(r => r.title === state.currentActionRecipe.title);

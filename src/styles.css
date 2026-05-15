@@ -74,7 +74,6 @@ body {
 
 .m3-card:hover {
     border-color: rgba(103, 80, 164, 0.3);
-    transform: translateY(-4px);
 }
 
 .m3-button-filled {
@@ -221,7 +220,6 @@ body {
 
 .m3-card:hover .more-btn {
     opacity: 1;
-    transform: scale(1.05);
 }
 
 [data-lucide="more-vertical"] {

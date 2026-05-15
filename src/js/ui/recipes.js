@@ -87,7 +87,7 @@ export function renderRecipes() {
         const recipeIdOrIndex = isExplore ? recipe._originalIndex : recipe.id;
         
         const imageContent = recipe.image 
-            ? `<img src="${recipe.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">`
+            ? `<img src="${recipe.image}" class="w-full h-full object-cover transition-transform duration-500">`
             : `<div class="w-full h-full flex items-center justify-center opacity-20 text-[var(--m3-primary)] bg-[var(--m3-surface-variant)]">
                     <i data-lucide="utensils" class="w-12 h-12"></i>
                </div>`;
@@ -102,7 +102,7 @@ export function renderRecipes() {
 
         return `
             <div onclick="${isExplore ? `openExploreDetail(${recipeIdOrIndex})` : `openDetail(${recipe.id})`}" class="m3-card group cursor-pointer flex flex-col h-full rounded-[28px] md:rounded-[32px] overflow-hidden">
-                <div class="w-full aspect-video bg-[var(--m3-surface-variant)] rounded-2xl mb-4 overflow-hidden relative">
+                <div class="w-full aspect-[4/5] md:aspect-video bg-[var(--m3-surface-variant)] rounded-2xl mb-4 overflow-hidden relative">
                     ${imageContent}
                     ${actionButtons}
                 </div>
