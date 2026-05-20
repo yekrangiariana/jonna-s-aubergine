@@ -47,19 +47,29 @@ export function initPWA() {
 // Expose trigger and dismiss functions globally for inline HTML click handlers
 window.triggerPwaInstall = async function() {
     if (!deferredPrompt) {
-        console.warn('Install prompt not available. Ensure you are on HTTPS or localhost and Chrome has qualified the app.');
+        // Detect if on iOS
+        const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        if (isIOS) {
+            alert('To install Aubergine on iOS:\n1. Tap the Share button in Safari (at the bottom or top of the screen).\n2. Scroll down and select "Add to Home Screen".');
+        } else {
+            alert('To install Aubergine on Android:\n1. Tap Chrome\'s menu (the three dots ⋮ in the top right).\n2. Select "Install app" or "Add to Home screen".');
+        }
         return;
     }
     
     // Hide the toast prompt
     hideToast();
     
-    // Show the browser's install prompt
-    deferredPrompt.prompt();
-    
-    // Wait for the user to respond to the prompt
-    const { outcome } = await deferredPrompt.userChoice;
-    console.log(`User response to install prompt: ${outcome}`);
+    try {
+        // Show the browser's install prompt
+        deferredPrompt.prompt();
+        
+        // Wait for the user to respond to the prompt
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`User response to install prompt: ${outcome}`);
+    } catch (err) {
+        console.error('Installation prompt failed:', err);
+    }
     
     // We've used the prompt, clear it
     deferredPrompt = null;
@@ -102,7 +112,7 @@ function updatePWAUI(state) {
         if (settingsInstallBtn) settingsInstallBtn.classList.add('hidden');
         if (settingsIncompatibleMsg) settingsIncompatibleMsg.classList.add('hidden');
         if (settingsInstalledMsg) settingsInstalledMsg.classList.remove('hidden');
-        if (settingsDesc) settingsDesc.innerText = 'Aubergine is installed and running as a standalone app! Cook anywhere, anytime with full offline capabilities.';
+        if (settingsDesc) settingsDesc.innerText = 'Aubergine is installed and running! Cook anywhere, anytime with full offline capabilities.';
         if (statusBadge) {
             statusBadge.innerText = 'Active App';
             statusBadge.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-500/10 text-emerald-600';
@@ -128,17 +138,17 @@ function updatePWAUI(state) {
         
         if (!isRecentlyDismissed && toast) {
             setTimeout(() => {
-                toast.classList.remove('translate-y-32', 'opacity-0', 'pointer-events-none');
+                toast.classList.remove('-translate-y-24', 'opacity-0', 'pointer-events-none');
                 toast.classList.add('translate-y-0', 'opacity-100');
             }, 2000);
         }
     } else if (state === 'incompatible') {
-        // Not secure (not HTTPS / localhost), so Chrome disables PWA
+        // Not secure (not HTTPS / localhost), so Chrome disables installation
         hideToast();
         if (settingsInstallBtn) settingsInstallBtn.classList.add('hidden');
         if (settingsInstalledMsg) settingsInstalledMsg.classList.add('hidden');
         if (settingsIncompatibleMsg) settingsIncompatibleMsg.classList.remove('hidden');
-        if (settingsDesc) settingsDesc.innerHTML = 'PWA installation requires a secure connection (<strong>HTTPS</strong>) or <strong>localhost</strong>. Insecure HTTP connections do not allow installation.';
+        if (settingsDesc) settingsDesc.innerHTML = 'App installation requires a secure connection (<strong>HTTPS</strong>) or <strong>localhost</strong>. Insecure HTTP connections do not allow installation.';
         if (statusBadge) {
             statusBadge.innerText = 'Incompatible';
             statusBadge.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-red-500/10 text-red-600';
@@ -153,7 +163,7 @@ function updatePWAUI(state) {
             const isSecure = window.location.protocol === 'https:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
             if (isSecure) {
                 settingsIncompatibleMsg.classList.add('hidden');
-                if (settingsDesc) settingsDesc.innerText = 'To install, use Chrome\'s menu options ("Install app" or "Add to Home screen") or wait for the system to prompt.';
+                if (settingsDesc) settingsDesc.innerText = 'To install, click the "Install" button above or use your browser\'s menu options ("Add to Home screen").';
                 if (statusBadge) {
                     statusBadge.innerText = 'Web App';
                     statusBadge.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-[var(--m3-outline)]/20 text-[var(--m3-on-surface-variant)]';
@@ -171,7 +181,7 @@ function hideToast() {
     const toast = document.getElementById('pwa-install-toast');
     if (toast) {
         toast.classList.remove('translate-y-0', 'opacity-100');
-        toast.classList.add('translate-y-32', 'opacity-0', 'pointer-events-none');
+        toast.classList.add('-translate-y-24', 'opacity-0', 'pointer-events-none');
     }
 }
 
