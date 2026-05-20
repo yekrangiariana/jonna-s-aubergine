@@ -4,6 +4,6 @@
   "private": true,
   "scripts": {
     "start": "npx -y servor . index.html 3000",
-    "build": "mkdir -p dist && cp -r src index.html manifest.json icon.svg recipes.json sw.js dist/"
+    "build": "mkdir -p dist && cp -r src index.html manifest.json icon.svg icon-192.png icon-512.png recipes.json sw.js dist/"
   }
 }
