@@ -41,6 +41,17 @@ import {
 import { initWelcomeModal } from './js/ui/welcome.js';
 import { initPWA } from './js/pwa.js';
 
+// Capture beforeinstallprompt as EARLY as possible — before any async gaps.
+// Chrome can fire this during or before DOMContentLoaded. If we miss it, the
+// install prompt is lost for that entire page session.
+window.__pwaInstallEvent = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    window.__pwaInstallEvent = e;
+    // If pwa.js is already initialised, hand it over immediately.
+    if (window.__pwaReady) window.__pwaReady(e);
+});
+
 // Expose to global scope for HTML onclick handlers immediately
 window.setView = setView;
 window.handleSearch = handleSearch;

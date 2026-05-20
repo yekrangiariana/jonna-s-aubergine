@@ -22,29 +22,33 @@ export function initPWA() {
         return;
     }
 
-    // 2. Listen for Chrome's beforeinstallprompt event
-    window.addEventListener('beforeinstallprompt', (e) => {
-        // Prevent the mini-infobar from appearing on mobile
-        e.preventDefault();
-        
-        // Save the event so it can be triggered later.
+    // 2. Handle the beforeinstallprompt event.
+    // The early listener in main.js may have already captured it — check first.
+    const handleInstallEvent = (e) => {
         deferredPrompt = e;
-        console.log('PWA installation is available (beforeinstallprompt fired).');
-        
+        console.log('PWA installation is available (beforeinstallprompt captured).');
         updatePWAUI('installable');
-    });
+    };
+
+    if (window.__pwaInstallEvent) {
+        // Event was captured before initPWA() ran — use it immediately.
+        handleInstallEvent(window.__pwaInstallEvent);
+    } else {
+        // Register callback for when event fires after initPWA() runs.
+        window.__pwaReady = handleInstallEvent;
+    }
 
     // 3. Listen for successful installation
-    window.addEventListener('appinstalled', (evt) => {
+    window.addEventListener('appinstalled', () => {
         console.log('Aubergine PWA was successfully installed.');
         deferredPrompt = null;
+        window.__pwaInstallEvent = null;
         updatePWAUI('installed');
     });
     
-    // 4. Initial UI check (fallback if neither event has fired yet)
+    // 4. Fallback check after a short delay
     setTimeout(() => {
         if (!deferredPrompt && !isStandalone) {
-            // If it's not local or not HTTPS, PWA installation will not be supported by Chrome
             const isSecure = window.location.protocol === 'https:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
             updatePWAUI(isSecure ? 'checking' : 'incompatible');
         }
