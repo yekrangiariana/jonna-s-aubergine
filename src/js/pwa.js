@@ -94,44 +94,10 @@ window.dismissPwaToast = function() {
 
 function updatePWAUI(state) {
     const toast = document.getElementById('pwa-install-toast');
-    const settingsCard = document.getElementById('pwa-settings-card');
-    
-    const settingsInstallBtn = document.getElementById('pwa-settings-install-btn');
-    const settingsInstalledMsg = document.getElementById('pwa-settings-installed-msg');
-    const settingsIncompatibleMsg = document.getElementById('pwa-settings-incompatible-msg');
-    const settingsDesc = document.getElementById('pwa-settings-desc');
-    const statusBadge = document.getElementById('pwa-status-badge');
 
     if (state === 'installed') {
-        // App is installed and running in standalone
         hideToast();
-        if (settingsCard) {
-            settingsCard.classList.remove('from-[var(--m3-surface)]', 'to-[var(--m3-primary-container)]/10');
-            settingsCard.classList.add('bg-emerald-500/5', 'border-emerald-500/20');
-        }
-        if (settingsInstallBtn) settingsInstallBtn.classList.add('hidden');
-        if (settingsIncompatibleMsg) settingsIncompatibleMsg.classList.add('hidden');
-        if (settingsInstalledMsg) settingsInstalledMsg.classList.remove('hidden');
-        if (settingsDesc) settingsDesc.innerText = 'Aubergine is installed and running! Cook anywhere, anytime with full offline capabilities.';
-        if (statusBadge) {
-            statusBadge.innerText = 'Active App';
-            statusBadge.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-500/10 text-emerald-600';
-        }
     } else if (state === 'installable') {
-        // App can be installed
-        if (settingsCard) {
-            settingsCard.classList.remove('bg-emerald-500/5', 'border-emerald-500/20');
-            settingsCard.classList.add('from-[var(--m3-surface)]', 'to-[var(--m3-primary-container)]/10');
-        }
-        if (settingsInstallBtn) settingsInstallBtn.classList.remove('hidden');
-        if (settingsInstalledMsg) settingsInstalledMsg.classList.add('hidden');
-        if (settingsIncompatibleMsg) settingsIncompatibleMsg.classList.add('hidden');
-        if (settingsDesc) settingsDesc.innerText = 'Install Aubergine on your device for offline cooking, seamless full-screen layout, and native app behavior.';
-        if (statusBadge) {
-            statusBadge.innerText = 'Installable';
-            statusBadge.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-[var(--m3-primary)]/10 text-[var(--m3-primary)]';
-        }
-
         // Show toast on home/search/explore if not recently dismissed
         const dismissedExpiry = localStorage.getItem(TOAST_DISMISSED_KEY);
         const isRecentlyDismissed = dismissedExpiry && parseInt(dismissedExpiry, 10) > Date.now();
@@ -142,36 +108,8 @@ function updatePWAUI(state) {
                 toast.classList.add('translate-y-0', 'opacity-100');
             }, 2000);
         }
-    } else if (state === 'incompatible') {
-        // Not secure (not HTTPS / localhost), so Chrome disables installation
-        hideToast();
-        if (settingsInstallBtn) settingsInstallBtn.classList.add('hidden');
-        if (settingsInstalledMsg) settingsInstalledMsg.classList.add('hidden');
-        if (settingsIncompatibleMsg) settingsIncompatibleMsg.classList.remove('hidden');
-        if (settingsDesc) settingsDesc.innerHTML = 'App installation requires a secure connection (<strong>HTTPS</strong>) or <strong>localhost</strong>. Insecure HTTP connections do not allow installation.';
-        if (statusBadge) {
-            statusBadge.innerText = 'Incompatible';
-            statusBadge.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-red-500/10 text-red-600';
-        }
     } else {
-        // Checking or not promptable yet (Chrome still evaluating criteria or already installed in browser but running in tab)
         hideToast();
-        if (settingsInstallBtn) settingsInstallBtn.classList.add('hidden');
-        if (settingsInstalledMsg) settingsInstalledMsg.classList.add('hidden');
-        if (settingsIncompatibleMsg) {
-            // If already installed but in tab, or still evaluating, we show standard message but hide buttons
-            const isSecure = window.location.protocol === 'https:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-            if (isSecure) {
-                settingsIncompatibleMsg.classList.add('hidden');
-                if (settingsDesc) settingsDesc.innerText = 'To install, click the "Install" button above or use your browser\'s menu options ("Add to Home screen").';
-                if (statusBadge) {
-                    statusBadge.innerText = 'Web App';
-                    statusBadge.className = 'px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-[var(--m3-outline)]/20 text-[var(--m3-on-surface-variant)]';
-                }
-            } else {
-                updatePWAUI('incompatible');
-            }
-        }
     }
     
     updateIcons();
@@ -185,15 +123,7 @@ function hideToast() {
     }
 }
 
-// Attach a helper to let other pages update settings UI on transition
+// Dummy helper since settings card was removed
 window.renderSettingsUI = function() {
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-    if (isStandalone) {
-        updatePWAUI('installed');
-    } else if (deferredPrompt) {
-        updatePWAUI('installable');
-    } else {
-        const isSecure = window.location.protocol === 'https:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        updatePWAUI(isSecure ? 'checking' : 'incompatible');
-    }
+    // No-op
 };
