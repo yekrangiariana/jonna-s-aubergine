@@ -1,6 +1,6 @@
 import { state } from "../state.js";
 import { db } from "../db.js";
-import { updateIcons, showConfirm } from "../utils.js";
+import { updateIcons, showConfirm, isIngredientMatch } from "../utils.js";
 import { renderRecipes } from "./recipes.js";
 
 export function openDetail(id) {
@@ -46,14 +46,25 @@ export function openDetail(id) {
                         </h3>
                         <ul class="space-y-4">
                             ${(recipe.ingredients || [])
-                              .map(
-                                (ing) => `
-                                <li class="flex items-start gap-4">
-                                    <div class="w-5 h-5 rounded-full border-2 border-[var(--m3-primary)]/20 flex-shrink-0 mt-1"></div>
-                                    <span class="text-base md:text-lg text-[var(--m3-on-surface)]">${ing}</span>
-                                </li>
-                            `,
-                              )
+                              .map((ing) => {
+                                const isMatched =
+                                  state.selectedIngredientsFilter.length > 0 &&
+                                  state.selectedIngredientsFilter.some((si) =>
+                                    isIngredientMatch(ing, si)
+                                  );
+                                const statusIcon = isMatched
+                                  ? `<div class="w-5 h-5 rounded-full bg-green-500/20 text-green-700 flex items-center justify-center flex-shrink-0 mt-1"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>`
+                                  : `<div class="w-5 h-5 rounded-full border-2 border-[var(--m3-outline)]/30 flex-shrink-0 mt-1"></div>`;
+                                const textClass = isMatched
+                                  ? "text-base md:text-lg text-green-700 font-semibold"
+                                  : "text-base md:text-lg text-[var(--m3-on-surface)]";
+                                return `
+                                  <li class="flex items-start gap-4">
+                                      ${statusIcon}
+                                      <span class="${textClass}">${ing}</span>
+                                  </li>
+                                `;
+                              })
                               .join("")}
                         </ul>
                     </section>
@@ -126,14 +137,25 @@ export function openExploreDetail(index) {
                         </h3>
                         <ul class="space-y-4">
                             ${(recipe.ingredients || [])
-                              .map(
-                                (ing) => `
-                                <li class="flex items-start gap-4">
-                                    <div class="w-5 h-5 rounded-full border-2 border-[var(--m3-primary)]/20 flex-shrink-0 mt-1"></div>
-                                    <span class="text-base md:text-lg text-[var(--m3-on-surface)]">${ing}</span>
-                                </li>
-                            `,
-                              )
+                              .map((ing) => {
+                                const isMatched =
+                                  state.selectedIngredientsFilter.length > 0 &&
+                                  state.selectedIngredientsFilter.some((si) =>
+                                    isIngredientMatch(ing, si)
+                                  );
+                                const statusIcon = isMatched
+                                  ? `<div class="w-5 h-5 rounded-full bg-green-500/20 text-green-700 flex items-center justify-center flex-shrink-0 mt-1"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>`
+                                  : `<div class="w-5 h-5 rounded-full border-2 border-[var(--m3-outline)]/30 flex-shrink-0 mt-1"></div>`;
+                                const textClass = isMatched
+                                  ? "text-base md:text-lg text-green-700 font-semibold"
+                                  : "text-base md:text-lg text-[var(--m3-on-surface)]";
+                                return `
+                                  <li class="flex items-start gap-4">
+                                      ${statusIcon}
+                                      <span class="${textClass}">${ing}</span>
+                                  </li>
+                                `;
+                              })
                               .join("")}
                         </ul>
                     </section>

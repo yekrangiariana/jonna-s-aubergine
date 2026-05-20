@@ -1,63 +1,80 @@
 [
   {
-    "title": "Classic Aubergine Parmigiana",
-    "description": "A heart-warming Italian classic featuring layers of fried aubergine, rich tomato sauce, and melted mozzarella.",
-    "prepTime": "20 mins",
-    "cookTime": "45 mins",
-    "servings": 4,
-    "category": "Dinner",
-    "image": "https://images.unsplash.com/photo-1625938146369-adc83368bda7?auto=format&fit=crop&w=800&q=80",
+    "title": "Spiced Crab Croquetas",
+    "description": "Crispy fried Spanish croquettes featuring a blend of white and brown crab meat spiced with fennel seeds and pimentón.",
+    "prepTime": "10 min",
+    "cookTime": "45 min",
+    "servings": 30,
+    "category": "Snack",
+    "image": "",
     "ingredients": [
-      "3 large aubergines, sliced",
-      "500ml tomato passata",
-      "2 cloves garlic, minced",
-      "250g mozzarella cheese",
-      "100g parmesan cheese, grated",
-      "Fresh basil leaves",
-      "Olive oil for frying",
-      "Salt and pepper to taste"
+      "75g unsalted butter",
+      "100g plain flour",
+      "¼ tsp smoked sweet pimentón",
+      "½ tsp fennel seeds, crushed",
+      "550-600ml whole milk",
+      "Sea salt",
+      "Black pepper",
+      "150g white crab meat",
+      "50g brown crab meat",
+      "Grated zest of 1 lemon",
+      "1 large egg, beaten",
+      "150g panko breadcrumbs",
+      "Oil for deep-frying"
     ],
     "instructions": [
-      "Layer the aubergine slices in a colander, sprinkling each layer with salt. Let sit for 30 minutes to draw out moisture.",
-      "Rinse and pat dry the aubergine slices.",
-      "Heat olive oil in a pan and fry aubergine slices until golden on both sides. Drain on paper towels.",
-      "In a separate pan, sauté garlic in olive oil, then add passata and simmer for 15 minutes. Season with salt and pepper.",
-      "In a baking dish, spread a little sauce, then a layer of aubergine, followed by sauce, mozzarella, parmesan, and basil.",
-      "Repeat layers until all ingredients are used, finishing with plenty of parmesan.",
-      "Bake at 200°C (400°F) for about 30 minutes until bubbling and golden."
+      "Melt butter in a non-stick pan over medium heat, stir in flour, and cook for one to two minutes.",
+      "Add pimentón and crushed fennel seeds, then gradually pour in 550ml of milk while stirring continuously.",
+      "Cook for seven minutes until a thick, glossy sauce forms, season with salt and pepper, and simmer for two to three additional minutes, adding extra milk if the mixture becomes too thick.",
+      "Remove sauce from heat, combine with the crab meat and lemon zest, then spread evenly onto a lined baking tray.",
+      "Cover the surface directly with greaseproof paper, cool to room temperature, and refrigerate for a minimum of two hours.",
+      "Roll the chilled mixture with wet hands into approximately 30 small balls.",
+      "Dip each portion into the beaten egg, coat thoroughly with panko breadcrumbs, and place back onto the tray.",
+      "Freeze the coated shapes for 20 minutes to firm up.",
+      "Heat frying oil to 170°C and fry the portions in small batches for three to four minutes until golden and hot.",
+      "Drain and finish with a light dusting of sea salt before serving."
     ],
     "isFavorite": false,
-    "createdAt": 1715688000000
+    "createdAt": 1774015712000
   },
   {
-    "title": "Zesty Lemon Pancake",
-    "description": "Fluffy, golden pancakes with a bright citrus kick. Perfect for a lazy Sunday morning.",
-    "prepTime": "10 mins",
-    "cookTime": "15 mins",
+    "title": "Perfect Risotto Primavera",
+    "description": "A creamy Italian rice dish packed with blanched spring greens and cooked in a homemade vegetable stock infused with pod and shoot trimmings.",
+    "prepTime": "15 min",
+    "cookTime": "1 hr",
     "servings": 2,
-    "category": "Breakfast",
-    "image": "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=800&q=80",
+    "category": "Dinner",
+    "image": "",
     "ingredients": [
-      "200g all-purpose flour",
-      "2 tsp baking powder",
-      "1 egg",
-      "300ml milk",
-      "Zest of 1 lemon",
-      "2 tbsp sugar",
-      "Pinch of salt",
-      "Butter for frying"
+      "110g peas in the pod",
+      "225g broad beans in the pod",
+      "4 asparagus spears",
+      "1 leek",
+      "3 wet garlic cloves",
+      "4 tbsp butter",
+      "200g carnaroli risotto rice",
+      "50ml white wine",
+      "25g pecorino cheese, finely grated",
+      "Fresh mint sprigs",
+      "Salt",
+      "Black pepper"
     ],
     "instructions": [
-      "Sift flour, baking powder, salt, and sugar into a large bowl.",
-      "In another bowl, whisk the egg, milk, and lemon zest.",
-      "Add the wet ingredients to the dry and stir until just combined (don't overbeat).",
-      "Heat butter in a non-stick pan over medium heat.",
-      "Pour a small amount of batter into the pan for each pancake.",
-      "Flip when bubbles appear on the surface and cook for another minute until golden.",
-      "Serve warm with honey or maple syrup."
+      "Shell the peas and broad beans, saving the empty pods.",
+      "Remove the tough ends from the asparagus spears and reserve them, then chop the remaining stems into small pieces while keeping the tips whole.",
+      "Clean the leek, slicing the main body into thin ribbons and setting aside the trimmings.",
+      "Boil the chopped asparagus pieces and tips in a pot of salted water for two minutes.",
+      "Add the peas and broad beans to the pot, cook for two more minutes until tender, then transfer all the vegetables into ice-cold water using a slotted spoon.",
+      "Place the saved vegetable trimmings, pods, asparagus ends, and one crushed garlic clove into the vegetable cooking water, then simmer gently for 30 minutes to create a stock.",
+      "Melt half the butter in a separate pan over low heat, add the sliced leek ribbons along with the remaining sliced garlic, and cook until softened without browning.",
+      "Increase the heat, stir in the rice to coat it thoroughly in the butter, and cook until the grains are hot to the touch.",
+      "Pour in the white wine and cook until the liquid is fully absorbed by the rice.",
+      "Add the warm homemade stock one ladleful at a time, stirring continuously and allowing the liquid to absorb before adding the next batch, until the rice is just cooked.",
+      "Incorporate the final ladle of stock, then stir in the remaining butter, grated cheese, and the drained green vegetables.",
+      "Cover the pan, remove it from the heat source, and let it rest for two minutes before mixing and garnishing with fresh mint."
     ],
     "isFavorite": false,
-    "createdAt": 1715691600000
+    "createdAt": 1774015740000
   },
   {
     "title": "Midnight Berry Smoothie",
@@ -83,5 +100,61 @@
     ],
     "isFavorite": false,
     "createdAt": 1715695200000
+  },
+  {
+    "title": "Orange, grapefruit and bay jelly",
+    "description": "A citrus-based jelly infused with fresh bay leaves and served alongside softly whipped double cream.",
+    "prepTime": "35 min",
+    "cookTime": "20 min",
+    "servings": 6,
+    "category": "Dessert",
+    "image": "",
+    "ingredients": [
+      "Neutral oil for greasing",
+      "220ml fresh red grapefruit juice",
+      "700ml fresh orange juice",
+      "4 fresh bay leaves",
+      "120g caster sugar",
+      "11 gelatine leaves",
+      "200ml double cream"
+    ],
+    "instructions": [
+      "Lightly oil a 1 litre mould.",
+      "Strain juices into a saucepan, add bruised bay leaves and sugar, simmer until sugar dissolves, then remove from heat to infuse for at least 30 minutes.",
+      "Soften gelatine leaves in cold water for five minutes, then squeeze out excess water.",
+      "Discard bay leaves, warm the juice, stir in the gelatine until dissolved, pour into the mould and chill for four to six hours until set.",
+      "Briefly dip the mould in warm water, turn the jelly out onto a plate and serve with softly whipped cream."
+    ],
+    "isFavorite": false,
+    "createdAt": 1779286683000
+  },
+  {
+    "title": "Matcha bounty bars",
+    "description": "A homemade confectionery featuring a matcha-infused desiccated coconut filling coated in melted dark chocolate.",
+    "prepTime": "5 min",
+    "cookTime": "30 min",
+    "servings": 24,
+    "category": "Snack",
+    "image": "",
+    "ingredients": [
+      "200g creamed coconut",
+      "6 tbsp coconut oil",
+      "3 tbsp maple syrup or runny honey",
+      "1 tsp vanilla extract",
+      "1½ tsp matcha powder",
+      "1 pinch sea salt",
+      "150g desiccated coconut",
+      "200g dark chocolate",
+      "Flaky sea salt"
+    ],
+    "instructions": [
+      "Line a 20cm square baking tin with baking paper.",
+      "Combine softened creamed coconut, coconut oil, maple syrup, vanilla, matcha and sea salt in a bowl, adding two to four tablespoons of water for a softer texture if desired.",
+      "Stir in the desiccated coconut, press the mixture evenly into the prepared tin and refrigerate for 15 to 30 minutes until set.",
+      "Melt the chocolate in a heatproof bowl set over a pan of simmering water.",
+      "Slice the coconut mixture into 24 bars, coat each bar in the melted chocolate using two forks, place on a lined tray and chill for 15 to 30 minutes before sprinkling with flaky salt."
+    ],
+    "isFavorite": false,
+    "createdAt": 1779286837000
   }
 ]

@@ -5,6 +5,7 @@ import {
   normalizeIngredientName,
   showFeedback,
   showConfirm,
+  isIngredientMatch,
 } from "../utils.js";
 
 export function updateIngredientSuggestions() {
@@ -56,10 +57,7 @@ export function renderRecipes() {
     _originalIndex: index,
   }));
 
-  let filtered = [...displayItems].sort((a, b) => {
-    if (state.currentView === "explore") return 0; // Keep explore order by default
-    return (b.createdAt || 0) - (a.createdAt || 0);
-  });
+  let filtered = [...displayItems];
 
   if (state.currentCategory === "Favorites" && state.currentView === "home") {
     filtered = filtered.filter((r) => r.isFavorite);
@@ -83,14 +81,10 @@ export function renderRecipes() {
     );
   }
 
-  if (state.selectedIngredientsFilter.length > 0) {
-    filtered = filtered.filter((r) => {
-      const recipeIngs = (r.ingredients || []).map((i) => i.toLowerCase());
-      return state.selectedIngredientsFilter.every((si) =>
-        recipeIngs.some((ri) => ri.includes(si.toLowerCase())),
-      );
-    });
-  }
+  filtered.sort((a, b) => {
+    if (state.currentView === "explore") return 0; // Keep explore order by default
+    return (b.createdAt || 0) - (a.createdAt || 0);
+  });
 
   if (filtered.length === 0) {
     container.innerHTML = `
@@ -136,10 +130,11 @@ export function renderRecipes() {
                 </div>
                 <div class="px-2 pb-2 flex-1 flex flex-col">
                     <div class="flex items-start justify-between gap-2 mb-2">
-                        <h3 class="text-xl md:text-2xl font-bold text-[var(--m3-on-surface)] line-clamp-1">${recipe.title}</h3>
+                        <h3 class="text-lg md:text-xl font-bold text-[var(--m3-on-surface)] leading-snug">${recipe.title}</h3>
                         ${isFavorite ? '<i data-lucide="heart" class="w-4 h-4 fill-[#B3261E] text-[#B3261E] mt-1 flex-shrink-0"></i>' : ""}
                     </div>
                     <p class="text-[var(--m3-on-surface-variant)] text-xs md:text-sm leading-relaxed mb-4 line-clamp-2 min-h-[32px] md:min-h-[40px]">${recipe.description || "No description."}</p>
+                    
                     <div class="mt-auto flex justify-between items-center py-2 border-t border-[var(--m3-outline)]/20">
                         <span class="text-[10px] md:text-[11px] font-black text-[var(--m3-primary)] uppercase tracking-wider">${recipe.prepTime || "15 MINS"}</span>
                         <div class="flex gap-1">

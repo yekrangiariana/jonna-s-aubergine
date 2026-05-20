@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Aubergine 🍆</title>
+    <title>Aubergine</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#6750A4">
     <link rel="apple-touch-icon" href="icon.svg">
@@ -97,8 +97,9 @@
                         <i data-lucide="shopping-cart"></i>
                         <span id="shopping-list-badge" class="absolute -top-1 -right-1 w-5 h-5 bg-[var(--m3-error)] text-white text-[10px] flex items-center justify-center rounded-full hidden">0</span>
                     </button>
-                    <button id="toggle-ingredient-filter" onclick="toggleIngredientFilter()" class="p-3 bg-[var(--m3-surface-variant)] hover:bg-[var(--m3-primary-container)] text-[var(--m3-on-surface)] rounded-2xl transition-all">
+                    <button id="toggle-ingredient-filter" onclick="toggleIngredientFilter()" class="p-3 bg-[var(--m3-surface-variant)] hover:bg-[var(--m3-primary-container)] text-[var(--m3-on-surface)] rounded-2xl transition-all relative">
                         <i data-lucide="refrigerator"></i>
+                        <span id="fridge-badge" class="absolute -top-1 -right-1 w-5 h-5 bg-[var(--m3-primary)] text-white text-[10px] flex items-center justify-center rounded-full hidden">0</span>
                     </button>
                 </div>
             </div>
@@ -135,6 +136,15 @@
                                 <!-- Suggestions -->
                             </div>
                         </div>
+                        
+                        <!-- Matching Recipes Section -->
+                        <div id="fridge-recipes-section" class="mt-4 border-t border-[var(--m3-outline)]/15 pt-4 hidden flex-col">
+                            <h3 class="text-xs font-black text-[var(--m3-primary)] uppercase tracking-wider mb-3">Available Recipes</h3>
+                            <div id="fridge-recipes-list" class="space-y-3 max-h-60 overflow-y-auto pr-1">
+                                <!-- Populated by JS -->
+                            </div>
+                        </div>
+
                         <div class="flex justify-end gap-2 pt-4">
                              <button onclick="clearIngredientFilter()" class="px-6 py-2 rounded-full font-bold text-[var(--m3-error)] hover:bg-[var(--m3-error)]/10">Clear all</button>
                              <button onclick="closeIngredientModal()" class="px-8 py-2 rounded-full font-bold bg-[var(--m3-primary)] text-white shadow-lg">Show Recipes</button>
@@ -384,13 +394,13 @@
                 <section>
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-sm font-black text-[var(--m3-primary)] uppercase tracking-wider">Ingredients to buy</h3>
-                        <button onclick="addShoppingItem()" class="flex items-center gap-1 text-xs font-bold text-[var(--m3-primary)] hover:underline">
-                            <i data-lucide="plus" class="w-3 h-3"></i> Add Item
-                        </button>
                     </div>
-                    <div id="shopping-list-items" class="space-y-2">
+                    <div id="shopping-list-items" class="space-y-2 mb-4">
                         <!-- Checkable items here -->
                     </div>
+                    <button onclick="addShoppingItem()" class="w-full flex items-center justify-center gap-2 p-3 bg-[var(--m3-surface-variant)] hover:bg-[var(--m3-primary-container)] text-[var(--m3-primary)] rounded-2xl text-sm font-bold border border-dashed border-[var(--m3-primary)]/30 active:scale-[0.98] transition-all">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Add Item
+                    </button>
                 </section>
             </div>
         </div>
