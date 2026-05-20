@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Jonna's Aubergine 🍆</title>
+    <title>Aubergine 🍆</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#6750A4">
-    <link rel="apple-touch-icon" href="icon.svg">
+    <link rel="apple-touch-icon" href="icon-192.png">
     <!-- Tailwind CSS Play CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -70,7 +70,7 @@
         <header class="px-6 md:px-8 pt-6 md:pt-8 pb-4 flex flex-col gap-4">
             <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                    <h1 id="view-title" class="text-3xl md:text-4xl font-bold tracking-tight text-[var(--m3-on-surface)]">Jonna's Aubergine 🍆</h1>
+                    <h1 id="view-title" class="text-3xl md:text-4xl font-bold tracking-tight text-[var(--m3-on-surface)]">Aubergine 🍆</h1>
                     <p id="view-subtitle" class="text-[var(--m3-on-surface-variant)] text-sm md:text-base mt-1">Discover your culinary journey</p>
                 </div>
                 <div class="flex gap-2">
@@ -147,17 +147,19 @@
         </div>
 
         <!-- Settings Panel -->
-        <div id="settings-panel" class="hidden flex-1 overflow-y-auto px-6 md:px-8 py-6 space-y-8">
+        <div id="settings-panel" class="hidden flex-1 overflow-y-auto pb-8">
             <!-- Dedicated Settings Header -->
-            <div class="flex flex-col gap-1 pb-6 border-b border-[var(--m3-outline)]/15">
-                <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-[var(--m3-on-surface)] flex items-center gap-2">
-                    <i data-lucide="settings" class="text-[var(--m3-primary)] w-8 h-8"></i>
-                    Settings
-                </h1>
-                <p class="text-[var(--m3-on-surface-variant)] text-sm md:text-base mt-1">Manage your recipes, backups, and app data</p>
+            <div class="px-6 md:px-8 pt-6 md:pt-8 pb-4 flex flex-col gap-4 border-b border-[var(--m3-outline)]/15">
+                <div>
+                    <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-[var(--m3-on-surface)] flex items-center gap-2">
+                        <i data-lucide="settings" class="text-[var(--m3-primary)] w-8 h-8"></i>
+                        Settings
+                    </h1>
+                    <p class="text-[var(--m3-on-surface-variant)] text-sm md:text-base mt-1">Manage your recipes, backups, and app data</p>
+                </div>
             </div>
 
-            <div class="max-w-4xl mx-auto space-y-8">
+            <div class="px-6 md:px-8 py-6 max-w-4xl mx-auto space-y-8">
                 <!-- Backup File Export Card -->
                 <div class="m3-card !p-8 flex flex-col gap-5 shadow-sm">
                     <div class="flex items-center gap-3">
@@ -171,7 +173,7 @@
                     </div>
                     
                     <p class="text-sm text-[var(--m3-on-surface-variant)] leading-relaxed">
-                        Keep your culinary collection safe by exporting your entire recipe database and active shopping list as a single JSON file. You can restore this file at any time on this device or another browser.
+                        Download a JSON backup of your recipes and shopping lists. Restore it anytime to recover your data offline.
                     </p>
                     
                     <div class="flex flex-wrap gap-3 pt-2">
@@ -199,7 +201,7 @@
                     </div>
                     
                     <p class="text-sm text-[var(--m3-on-surface-variant)] leading-relaxed">
-                        Permanently delete all custom recipes, ingredients lists, and shopping checklist data from your browser's local IndexedDB database. <strong>This action cannot be undone.</strong> Please download an export file first if you wish to preserve your data.
+                        Permanently erase all custom recipes and shopping lists from this browser. <strong>This action is irreversible.</strong>
                     </p>
                     
                     <div class="pt-2 flex justify-start">
@@ -216,7 +218,7 @@
                             🍆
                         </div>
                         <div>
-                            <h2 class="text-xl font-bold text-[var(--m3-on-surface)]">Jonna's Aubergine</h2>
+                            <h2 class="text-xl font-bold text-[var(--m3-on-surface)]">Aubergine</h2>
                             <p class="text-sm text-[var(--m3-on-surface-variant)] mt-0.5">Your serverless offline culinary companion</p>
                         </div>
                     </div>

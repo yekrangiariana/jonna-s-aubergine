@@ -1,7 +1,6 @@
 import { state } from '../state.js';
 import { updateIcons, showConfirm } from '../utils.js';
 import { renderRecipes } from './recipes.js';
-import { queueAutoSync } from '../sync.js';
 
 export function loadShoppingListData() {
     try {
@@ -23,7 +22,6 @@ export function saveShoppingListData() {
         shoppingListItems: state.shoppingListItems
     }));
     updateShoppingBadge();
-    queueAutoSync();
 }
 
 export function updateShoppingBadge() {

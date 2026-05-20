@@ -35,21 +35,23 @@ export async function renderView(view) {
     
     // Toggle primary view containers
     const recipeGrid = document.getElementById('recipe-grid');
-    const syncPanel = document.getElementById('sync-panel');
     const settingsPanel = document.getElementById('settings-panel');
 
-    if (view === 'sync') {
+    // Toggle main recipe header for a dedicated Settings tab layout
+    const mainHeader = document.querySelector('main > header');
+    if (mainHeader) {
+        if (view === 'settings') {
+            mainHeader.classList.add('hidden');
+        } else {
+            mainHeader.classList.remove('hidden');
+        }
+    }
+
+    if (view === 'settings') {
         if (recipeGrid) recipeGrid.classList.add('hidden');
-        if (settingsPanel) settingsPanel.classList.add('hidden');
-        if (syncPanel) syncPanel.classList.remove('hidden');
-        if (window.renderSyncUI) window.renderSyncUI();
-    } else if (view === 'settings') {
-        if (recipeGrid) recipeGrid.classList.add('hidden');
-        if (syncPanel) syncPanel.classList.add('hidden');
         if (settingsPanel) settingsPanel.classList.remove('hidden');
         if (window.renderSettingsUI) window.renderSettingsUI();
     } else {
-        if (syncPanel) syncPanel.classList.add('hidden');
         if (settingsPanel) settingsPanel.classList.add('hidden');
         if (recipeGrid) recipeGrid.classList.remove('hidden');
     }
@@ -57,7 +59,6 @@ export async function renderView(view) {
     document.getElementById('nav-home').className = `nav-rail-icon ${view === 'home' ? 'active' : 'inactive'}`;
     document.getElementById('nav-search').className = `nav-rail-icon ${view === 'search' ? 'active' : 'inactive'}`;
     document.getElementById('nav-explore').className = `nav-rail-icon ${view === 'explore' ? 'active' : 'inactive'}`;
-    document.getElementById('nav-sync').className = `nav-rail-icon ${view === 'sync' ? 'active' : 'inactive'}`;
     document.getElementById('nav-settings').className = `nav-rail-icon ${view === 'settings' ? 'active' : 'inactive'}`;
     
     const searchContainer = document.getElementById('search-container');
@@ -91,12 +92,9 @@ export async function renderView(view) {
     } else if (view === 'explore') {
         titleText = 'Explore New Tastes';
         subtitleText = 'Find and add new recipes to your collection';
-    } else if (view === 'sync') {
-        titleText = 'Cloud Sync';
-        subtitleText = 'Backup & restore database to Google Drive';
     } else if (view === 'settings') {
-        titleText = 'App Settings';
-        subtitleText = 'Configure your culinary companion';
+        titleText = 'Settings';
+        subtitleText = 'Manage your recipes, backups, and app data';
     }
 
     document.getElementById('view-title').innerText = titleText;

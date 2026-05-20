@@ -34,17 +34,9 @@ import {
 } from './js/ui/modals.js';
 import { openRecipeActions, closeRecipeActions, handleAction } from './js/ui/actions.js';
 import { 
-    initGsiClient, 
-    saveClientId, 
-    triggerConnect, 
-    triggerDisconnect, 
-    toggleAutoSyncPref, 
-    performSync, 
-    toggleSetupInstructions, 
     exportLocalBackup, 
     importLocalBackup, 
-    dangerResetDatabase,
-    renderSyncUI
+    dangerResetDatabase
 } from './js/sync.js';
 
 // Expose to global scope for HTML onclick handlers immediately
@@ -79,26 +71,17 @@ window.addShoppingItem = addShoppingItem;
 window.clearShoppingList = clearShoppingList;
 window.closeConfirm = closeConfirm;
 
-// Expose Sync Handlers
-window.saveClientId = saveClientId;
-window.triggerConnect = triggerConnect;
-window.triggerDisconnect = triggerDisconnect;
-window.toggleAutoSyncPref = toggleAutoSyncPref;
-window.triggerBackup = () => performSync('upload');
-window.triggerRestore = () => performSync('download');
-window.toggleSetupInstructions = toggleSetupInstructions;
+// Expose Backup Handlers
 window.exportLocalBackup = exportLocalBackup;
 window.importLocalBackup = importLocalBackup;
 window.dangerResetDatabase = dangerResetDatabase;
-window.renderSyncUI = renderSyncUI;
-window.renderSettingsUI = () => {}; // Pluralistic settings placeholder
+window.renderSettingsUI = () => {};
 
 // Init
 async function init() {
     console.log('Initializing Jonna\'s Aubergine (Refactored)...');
     updateIcons(); // Initial call for static icons
     try {
-        initGsiClient(); // Start Google GSI Library load
         state.recipes = await db.recipes.toArray();
         await loadExploreRecipes();
         loadShoppingListData();

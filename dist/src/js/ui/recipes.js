@@ -6,7 +6,6 @@ import {
   showFeedback,
   showConfirm,
 } from "../utils.js";
-import { queueAutoSync } from "../sync.js";
 
 export function updateIngredientSuggestions() {
   const allIngredients = [...state.recipes, ...state.exploreRecipes].flatMap(
@@ -166,7 +165,6 @@ export async function toggleFavorite(e, id) {
   try {
     await db.recipes.update(id, { isFavorite: recipe.isFavorite });
     renderRecipes();
-    queueAutoSync();
   } catch (error) {
     console.error("Failed to toggle favorite:", error);
   }
@@ -185,7 +183,6 @@ export async function addToHome(e, exploreIndex, skipFeedback = false) {
     await db.recipes.add(docToAdd);
     state.recipes = await db.recipes.toArray();
     renderRecipes();
-    queueAutoSync();
     
     if (!skipFeedback) {
       showFeedback(

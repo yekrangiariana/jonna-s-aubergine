@@ -1,5 +1,5 @@
 {
-  "name": "Jonna's Aubergine",
+  "name": "Aubergine",
   "description": "A static, vanilla JS recipe organizer with PWA support, adaptive Dark Mode, and local IndexedDB storage.",
   "requestFramePermissions": [],
   "majorCapabilities": []

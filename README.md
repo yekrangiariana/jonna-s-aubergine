@@ -1,4 +1,4 @@
-# Jonna's Aubergine 🍆
+# Aubergine 🍆
 
 A truly static, vanilla JS and HTML recipe organizer with offline storage and a responsive Material 3 inspired design.
 
