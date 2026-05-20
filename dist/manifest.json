@@ -1,0 +1,17 @@
+{
+  "name": "Jonna's Aubergine",
+  "short_name": "Aubergine",
+  "description": "Your local culinary companion",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FEF7FF",
+  "theme_color": "#6750A4",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

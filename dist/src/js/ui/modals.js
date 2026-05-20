@@ -2,6 +2,7 @@ import { state } from "../state.js";
 import { db } from "../db.js";
 import { updateIcons, showConfirm } from "../utils.js";
 import { renderRecipes } from "./recipes.js";
+import { queueAutoSync } from "../sync.js";
 
 export function openDetail(id) {
   const recipe = state.recipes.find((r) => r.id === id);
@@ -318,6 +319,7 @@ export async function saveRecipe() {
     state.recipes = await db.recipes.toArray();
     closeForm();
     renderRecipes();
+    queueAutoSync();
   } catch (error) {
     console.error("Failed to save recipe:", error);
     alert("Save failed. Check console for details.");
@@ -334,6 +336,7 @@ export async function deleteRecipe(id) {
         state.recipes = await db.recipes.toArray();
         closeDetail();
         renderRecipes();
+        queueAutoSync();
       } catch (error) {
         console.error("Failed to delete recipe:", error);
       }
