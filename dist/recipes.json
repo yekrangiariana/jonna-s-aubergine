@@ -156,5 +156,38 @@
     ],
     "isFavorite": false,
     "createdAt": 1779286837000
+  },
+  {
+    "title": "Grilled Nectarine and Burrata Salad",
+    "description": "A fresh summer salad featuring charred nectarines, creamy burrata cheese and quick-pickled red onions tossed with tomatoes, cucumber and rocket.",
+    "prepTime": "35 min",
+    "cookTime": "10 min",
+    "servings": 4,
+    "category": "Lunch",
+    "image": "",
+    "ingredients": [
+      "1 peeled and finely sliced red onion",
+      "2 tbsp white wine vinegar",
+      "2 tsp caster sugar",
+      "Salt and pepper",
+      "40g pumpkin seeds",
+      "2 firm nectarines",
+      "4-5 tbsp extra virgin olive oil",
+      "1 cucumber, halved lengthways, deseeded and sliced diagonally",
+      "300g halved baby tomatoes",
+      "2 big handfuls chopped mint leaves",
+      "80g rocket",
+      "Juice of ½ lemon",
+      "250g burrata"
+    ],
+    "instructions": [
+      "Mix the red onion, white wine vinegar and caster sugar in a bowl, season and leave to pickle.",
+      "Toast the pumpkin seeds in a dry frying pan over a medium heat for a few minutes then remove from the pan.",
+      "Stone the nectarines, cut into quarters, toss with 1 tbsp olive oil, season and char in a hot griddle pan for a few minutes on each side.",
+      "Toss the cucumber, tomatoes, mint, rocket, lemon juice and a few tablespoons of olive oil together in a bowl, season well and transfer to a serving plate.",
+      "Tear the burrata over the salad, arrange the nectarines, scatter the pickled onions along with their liquid, drizzle with remaining olive oil and top with pumpkin seeds."
+    ],
+    "isFavorite": false,
+    "createdAt": 1779290404000
   }
 ]

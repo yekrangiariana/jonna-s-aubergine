@@ -1,11 +1,18 @@
 import { updateIcons } from './utils.js';
 
 let deferredPrompt = null;
-const TOAST_DISMISSED_KEY = 'aubergine_pwa_toast_dismissed';
+const TOAST_DISMISSED_KEY = 'aubergine_pwa_toast_dismissed_v2';
 
 export function initPWA() {
     console.log('Initializing PWA manager...');
     
+    // Clean up expired dismiss keys so the toast can reappear
+    const dismissedExpiry = localStorage.getItem(TOAST_DISMISSED_KEY);
+    if (dismissedExpiry && parseInt(dismissedExpiry, 10) < Date.now()) {
+        localStorage.removeItem(TOAST_DISMISSED_KEY);
+        console.log('PWA toast dismiss key expired — cleared.');
+    }
+
     // 1. Detect if already running in standalone mode
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
     
@@ -87,8 +94,8 @@ window.triggerPwaInstall = async function() {
 
 window.dismissPwaToast = function() {
     hideToast();
-    // Remember the user's preference for 7 days so we do not prompt too aggressively
-    const expiry = Date.now() + 7 * 24 * 60 * 60 * 1000;
+    // Remember the user's preference for 24 hours so we do not prompt too aggressively
+    const expiry = Date.now() + 24 * 60 * 60 * 1000;
     localStorage.setItem(TOAST_DISMISSED_KEY, expiry.toString());
 };
 

@@ -4,6 +4,14 @@ import { renderRecipes } from './recipes.js';
 
 export function loadShoppingListData() {
     try {
+        // Restore fridge filter
+        const storedFridge = localStorage.getItem('jonna_fridge_filter');
+        if (storedFridge) {
+            state.selectedIngredientsFilter = JSON.parse(storedFridge) || [];
+            renderIngredientTags();
+        }
+
+        // Restore shopping list
         const stored = localStorage.getItem('jonna_shopping_list');
         if (stored) {
             const data = JSON.parse(stored);
@@ -12,6 +20,7 @@ export function loadShoppingListData() {
             syncShoppingListWithFridge();
             updateShoppingBadge();
         }
+
         updateFridgeBadge();
     } catch (e) {
         console.error('Failed to load shopping list data', e);
@@ -24,6 +33,10 @@ export function saveShoppingListData() {
         shoppingListItems: state.shoppingListItems
     }));
     updateShoppingBadge();
+}
+
+export function saveFridgeFilter() {
+    localStorage.setItem('jonna_fridge_filter', JSON.stringify(state.selectedIngredientsFilter));
 }
 
 export function updateShoppingBadge() {
@@ -65,6 +78,7 @@ export function closeIngredientModal() {
 
 export function clearIngredientFilter() {
     state.selectedIngredientsFilter = [];
+    saveFridgeFilter();
     renderIngredientTags();
     renderFridgeRecipes();
     updateFridgeBadge();
@@ -98,6 +112,7 @@ export function handleIngredientKey(e) {
 export function addIngredientTag(ing) {
     if (state.selectedIngredientsFilter.includes(ing)) return;
     state.selectedIngredientsFilter.push(ing);
+    saveFridgeFilter();
     renderIngredientTags();
     renderFridgeRecipes();
     syncShoppingListWithFridge();
@@ -108,6 +123,7 @@ export function addIngredientTag(ing) {
 
 export function removeIngredientTag(ing) {
     state.selectedIngredientsFilter = state.selectedIngredientsFilter.filter(i => i !== ing);
+    saveFridgeFilter();
     renderIngredientTags();
     renderFridgeRecipes();
     updateFridgeBadge();

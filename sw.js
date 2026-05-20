@@ -1,4 +1,4 @@
-const CACHE_NAME = "aubergine-v8";
+const CACHE_NAME = "aubergine-v9";
 const ASSETS = [
   "./",
   "index.html",
