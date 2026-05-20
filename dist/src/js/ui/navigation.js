@@ -83,7 +83,7 @@ export async function renderView(view) {
         categoryFilters.classList.add('hidden');
     }
 
-    let titleText = 'Jonna\'s Aubergine 🍆';
+    let titleText = 'Aubergine 🍆';
     let subtitleText = 'Discover your culinary journey';
 
     if (view === 'search') {

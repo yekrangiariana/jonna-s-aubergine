@@ -1,8 +1,10 @@
-const CACHE_NAME = 'jonna-aubergine-v3';
+const CACHE_NAME = 'aubergine-v5';
 const ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
+  '/icon-192.png',
+  '/icon-512.png',
   '/icon.svg',
   '/recipes.json',
   '/src/styles.css',
@@ -15,6 +17,7 @@ const ASSETS = [
   '/src/js/ui/navigation.js',
   '/src/js/ui/recipes.js',
   '/src/js/ui/shopping.js',
+  '/src/js/ui/welcome.js',
   'https://unpkg.com/dexie/dist/dexie.js',
   'https://unpkg.com/lucide@latest',
   'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,700&display=swap'

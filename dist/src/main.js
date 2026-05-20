@@ -38,6 +38,7 @@ import {
     importLocalBackup, 
     dangerResetDatabase
 } from './js/sync.js';
+import { initWelcomeModal } from './js/ui/welcome.js';
 
 // Expose to global scope for HTML onclick handlers immediately
 window.setView = setView;
@@ -79,8 +80,9 @@ window.renderSettingsUI = () => {};
 
 // Init
 async function init() {
-    console.log('Initializing Jonna\'s Aubergine (Refactored)...');
+    console.log('Initializing Aubergine...');
     updateIcons(); // Initial call for static icons
+    initWelcomeModal();
     try {
         state.recipes = await db.recipes.toArray();
         await loadExploreRecipes();
