@@ -39,6 +39,7 @@ import {
     dangerResetDatabase
 } from './js/sync.js';
 import { initWelcomeModal } from './js/ui/welcome.js';
+import { initPWA } from './js/pwa.js';
 
 // Expose to global scope for HTML onclick handlers immediately
 window.setView = setView;
@@ -83,6 +84,7 @@ async function init() {
     console.log('Initializing Aubergine...');
     updateIcons(); // Initial call for static icons
     initWelcomeModal();
+    initPWA();
     try {
         state.recipes = await db.recipes.toArray();
         await loadExploreRecipes();
@@ -116,7 +118,7 @@ async function loadExploreRecipes() {
 // Register Service Worker
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
+        navigator.serviceWorker.register('./sw.js')
             .then(reg => console.log('Service Worker registered:', reg))
             .catch(err => console.log('Service Worker registration failed:', err));
     });

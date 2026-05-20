@@ -1,23 +1,24 @@
-const CACHE_NAME = 'aubergine-v5';
+const CACHE_NAME = 'aubergine-v6';
 const ASSETS = [
-  '/',
-  '/index.html',
-  '/manifest.json',
-  '/icon-192.png',
-  '/icon-512.png',
-  '/icon.svg',
-  '/recipes.json',
-  '/src/styles.css',
-  '/src/main.js',
-  '/src/js/db.js',
-  '/src/js/state.js',
-  '/src/js/utils.js',
-  '/src/js/ui/actions.js',
-  '/src/js/ui/modals.js',
-  '/src/js/ui/navigation.js',
-  '/src/js/ui/recipes.js',
-  '/src/js/ui/shopping.js',
-  '/src/js/ui/welcome.js',
+  './',
+  'index.html',
+  'manifest.json',
+  'icon-192.png',
+  'icon-512.png',
+  'icon.svg',
+  'recipes.json',
+  'src/styles.css',
+  'src/main.js',
+  'src/js/pwa.js',
+  'src/js/db.js',
+  'src/js/state.js',
+  'src/js/utils.js',
+  'src/js/ui/actions.js',
+  'src/js/ui/modals.js',
+  'src/js/ui/navigation.js',
+  'src/js/ui/recipes.js',
+  'src/js/ui/shopping.js',
+  'src/js/ui/welcome.js',
   'https://unpkg.com/dexie/dist/dexie.js',
   'https://unpkg.com/lucide@latest',
   'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@1,700&display=swap'
@@ -47,6 +48,9 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
+  
+  // Only handle http and https requests to avoid extension/external scheme issues
+  if (!event.request.url.startsWith('http')) return;
 
   event.respondWith(
     fetch(event.request)
